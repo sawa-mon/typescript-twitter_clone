@@ -7,7 +7,7 @@ import firebase from "firebase/app";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import { IconButton, Button, Avatar } from "@material-ui/core";
 
-export const TweetInput = () => {
+export const TweetInput: React.FC = () => {
   const user = useSelector(selectUser);
   const [tweetImage, setTweetImage] = useState<File | null>(null);
   const [tweetMsg, setTweetMsg] = useState("");
@@ -42,7 +42,7 @@ export const TweetInput = () => {
             .getDownloadURL()
             .then(async (url) => {
               await db.collection("posts").add({
-                avater: user.photoUrl,
+                avatar: user.photoUrl,
                 image: url,
                 text: tweetMsg,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -54,7 +54,7 @@ export const TweetInput = () => {
     } else {
       db.collection("posts").add({
         //postsというdbのコレクションに追加する
-        avater: user.photoUrl,
+        avatar: user.photoUrl,
         image: "",
         text: tweetMsg,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
