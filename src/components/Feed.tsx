@@ -33,10 +33,10 @@ export const Feed: React.FC = () => {
           }))
         )
       );
-    return () => {
-      unSub();
-      console.log(unSub);
-    };
+    // return () => {
+    //   unSub();
+    //   console.log(unSub);
+    // };
   }, []);
 
   return (
